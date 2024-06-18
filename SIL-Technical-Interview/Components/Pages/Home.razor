@@ -4,9 +4,40 @@
 
 <h1>Select a Rick and Morty Character</h1>
 
-<button>Get Rick and Morty Character</button>
+<button @onclick="FetchData">Fetch Data</button>
+
+@if (character != null)
+{
+    <h2>@character.Name</h2>
+    <img src="@character.Image" alt="@character.Name" />
+    <p>@character.Status</p>
+    <p>@character.Species</p>
+}
+else
+{
+    <p>No character selected</p>
+}
 
 
 @code{
+public RicknMortyCharacter character;
+
+//httpclient
+public HttpClient httpClient = new HttpClient();
+
+//fetchdata method
+public async Task FetchData()
+{
+    character = await httpClient.GetFromJsonAsync<RicknMortyCharacter>("https://rickandmortyapi.com/api/character/24");
+
+    //console the fetched data
+    Console.WriteLine(character);
+}
+
+//Run fetch data immediatelly when app loads
+protected override async Task OnInitializedAsync()
+{
+    await FetchData();
+    }
 
 }
