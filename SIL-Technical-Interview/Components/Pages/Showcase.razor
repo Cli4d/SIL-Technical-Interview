@@ -1,0 +1,60 @@
+@page "/showcase"
+
+<PageTitle>Rick and Morty Character Showcase</PageTitle>
+
+<h1>Select a Rick and Morty Character</h1>
+
+<button @onclick="FetchData">Fetch Data</button>
+
+@if (character != null)
+{
+    <h2>@character?.Name</h2>
+    <img src="@character?.Image" alt="@character?.Name" />
+    <p>@character?.Status</p>
+    <p>@character?.Species</p>
+    <p>@character?.Location?.Name</p>
+
+
+    @if (unsplashAPI != null)
+    {
+        <img src="@unsplashAPI?.Urls.Regular" alt="@character?.Location?.Name" />
+    }
+    else
+    {
+        <p>Image not found</p>
+    }
+}
+else
+{
+    <p>Search for your desired character</p>
+}
+
+
+@code{
+//Rick and Morty Character
+public RicknMortyCharacter character;
+
+//Unsplash Images from the character selected
+public UnsplashAPI unsplashAPI;
+
+//Unsplash API Access Key
+public string accessKeyUnsplash = "WWn4FRwhMMHjRfFz_k_YsIJegwHUoNeth-mZQHLNn0s";
+
+//httpclient
+public HttpClient httpClient = new HttpClient();
+
+//fetchdata method
+private async Task FetchData()
+{
+    character = await httpClient.GetFromJsonAsync<RicknMortyCharacter>("https://rickandmortyapi.com/api/character/24");
+
+    //Unsplash API
+    unsplashAPI = await httpClient.GetFromJsonAsync<UnsplashAPI>("https://api.unsplash.com/photos/random?query=" + character.Location.Name + "&client_id=" + accessKeyUnsplash);
+}
+//Run fetch data immediatelly when app loads
+ protected override async Task OnInitializedAsync()
+{
+    await FetchData();
+    }
+
+}
