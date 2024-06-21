@@ -2,17 +2,47 @@
 
 <PageTitle>Rick and Morty Character Showcase</PageTitle>
 
-<h1>Select a Rick and Morty Character</h1>
+<h1>Rick and Morty Character Showcase</h1>
 
-<button @onclick="FetchData">Fetch Data</button>
+@* Add a boostrap search and it's label *@
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Enter a character name" aria-label="Search for a character" aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="FetchData">Search</button>
+    </div>
 
-@if (character != null)
+@if (characters != null)
 {
-    <h2>@character?.Name</h2>
-    <img src="@character?.Image" alt="@character?.Name" />
-    <p>@character?.Status</p>
-    <p>@character?.Species</p>
-    <p>@character?.Location?.Name</p>
+    //Loop through characters and place them in bootstrap cards
+    foreach (var character in characters.Results)
+    {
+        <div class="card" style="width: 18rem;">
+            <img src="@character.Image" class="card-img-top" alt="@character.Name" />
+            <div class="card-body">
+                <h5 class="card-title">@character.Name</h5>
+                <p class="card-text">
+                    Character Info 
+                    Status: @character.Status
+                    Species: @character.Species
+                    Location: @character.Location.Name
+
+                </p>
+            </div>
+        </div>
+    }
+
+        <div class="card" style="width: 18rem;">
+            <img src="@character?.Image" class="card-img-top" alt="@character?.Name" />
+            <div class="card-body">
+                <h5 class="card-title">@character?.Name</h5>
+                <p class="card-text">
+                    Character Info 
+                    Status: @character?.Status
+                    Species: @character?.Species
+                    Location: @character?.Location?.Name
+
+                </p>
+            </div>
+        </div>
 
 
     @if (unsplashAPI != null)
@@ -26,15 +56,22 @@
 }
 else
 {
-    <p>Search for your desired character</p>
+    <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    </div>
 }
 
 
-@code{
+@code {
 //Rick and Morty Character
 public RicknMortyCharacter character;
 
-//Unsplash Images from the character selected
+//Rick and Morty Characters info    
+public RicknMortyCharacters characters;
+
+//Unsplash Images from the characters
 public UnsplashAPI unsplashAPI;
 
 //Unsplash API Access Key
@@ -46,15 +83,22 @@ public HttpClient httpClient = new HttpClient();
 //fetchdata method
 private async Task FetchData()
 {
-    character = await httpClient.GetFromJsonAsync<RicknMortyCharacter>("https://rickandmortyapi.com/api/character/24");
+    //Make API call for list of characters
+    characters = await httpClient.GetFromJsonAsync<RicknMortyCharacters>("https://rickandmortyapi.com/api/character");
 
-    //Unsplash API
-    unsplashAPI = await httpClient.GetFromJsonAsync<UnsplashAPI>("https://api.unsplash.com/photos/random?query=" + character.Location.Name + "&client_id=" + accessKeyUnsplash);
+    //print characters
+    Console.WriteLine("characters");
+
+    @*character = await httpClient.GetFromJsonAsync<RicknMortyCharacter>("https://rickandmortyapi.com/api/characters");*@
+    
+    //Get an image from each character location
+    @* unsplashAPI = await httpClient.GetFromJsonAsync<UnsplashAPI>($"https://api.unsplash.com/photos/random}"; *@
+    @* unsplashAPI = await httpClient.GetFromJsonAsync<UnsplashAPI>($"https://api.unsplash.com/photos/random?query={character.Location.Name}&client_id=" + {accessKeyUnsplash}"; *@
 }
-//Run fetch data immediatelly when app loads
- protected override async Task OnInitializedAsync()
-{
-    await FetchData();
-    }
 
+//Get characters on load
+protected override async Task OnInitializedAsync()
+{
+    FetchData();
+}
 }
