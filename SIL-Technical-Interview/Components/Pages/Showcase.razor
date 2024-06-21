@@ -11,23 +11,29 @@
 </div>
 @if (characters?.Results != null)
 {
-    //Loop through characters and place them in bootstrap cards
-    foreach (var character in characters.Results)
+    <div class="row">
+    @foreach (var character in characters.Results)
     {
-        <div class="card" style="width: 18rem;">
-            <img src="@character.Image" class="card-img-top" alt="@character.Name"/>
-            <div class="card-body">
-                <h5 class="card-title">@character.Name</h5>
-                <p class="card-text">
-                    Character Info
-                    Status: @character.Status
-                    Species: @character.Species
-                    Location: @character.Location.Name
-
-                </p>
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                <img src="@character.Image" class="card-img-top" alt="@character.Name"/>
+                <div class="card-body">
+                    <h5 class="card-title displa-2">@character.Name</h5>
+                    <p class="card-text">
+                        <span class="h6">Character Info</span>
+                        <br/>
+                        <span>Status</span>: @character.Status
+                        <br/>
+                        <span>Species</span>: @character.Species
+                        <br/>
+                        <span>Location</span>: @character.Location.Name
+                    </p>
+                </div>
             </div>
         </div>
+        
     }
+    </div>
 
     <div class="card" style="width: 18rem;">
         <img src="@character?.Image" class="card-img-top" alt="@character?.Name"/>
