@@ -11,133 +11,181 @@
     </header>
 
     <main>
-        <div class="content">
-            <div class="unsplash">
-                <h2>Unsplash</h2>
-                <p class="text-muted">
-                    Learn about the power of Unsplash, how to intergrate it and the different use cases for their amazing API
-                </p>
-                <p>
-                    Unsplash is a website dedicated to sharing stock photography under the Unsplash license. The website claims over 110,000 contributing photographers and generates more than 9 billion photo impressions per month on their growing library of over 1.5 million photos.
-                </p>
-                <section class="indent-details">
-                    <h4>Unsplash API</h4>
-                    <p>
-                        Unsplash has an API that allows you to access their library of photos and videos.
-                        You can use the API to fetch photos and videos, search for photos and videos, and more. The API is free to use and does not require an API key.
+        <section class="api-documentation">
+           <div class="">
+            <h2 id="unsplash-api-documentation">Unsplash API Documentation</h2>
+            <p>Dive into Unsplash, a vast library offering royalty-free, high-resolution images. Enhance your projects without copyright concerns.</p>
+            <p><strong>What Can I Use This API for?</strong></p>
+            <ul>
+            <li><p>Integrate beautiful visuals into your web or mobile applications.</p>
+            </li>
+            <li><p>Create stunning presentations, marketing materials, and blog posts.</p>
+            </li>
+            <li><p>Personalize user experiences with a wide variety of images.</p>
+            </li>
+            </ul>
+            <p><strong>Getting Started</strong></p>
+            <p>Get started by registering your application and obtaining an access key. This unlocks the power of the API.</p>
+            <ol>
+            <li><p><strong>Create a developer account with Unsplash.</strong> To create a developer account just go to <a href="https://unsplash.com/documentation">https://unsplash.com/documentation</a>.</p>
+            </li>
+            <li><p><strong>Register your application.</strong> This will help in authorization (provide an access token) for which you can access the API&#39;s full capability. A registered app goes into Demo Mode first with a limit of 50 requests per hour. Then later on one can apply for production mode. Demo mode is great for testing.</p>
+            </li>
+            </ol>
+            <p><strong>Understanding Endpoints</strong></p>
+            <p>Learn about available addresses and endpoints, allowing you to fetch specific content. The base URL for this API is <a href="https://api.unsplash.com/">https://api.unsplash.com/</a>. This is where all endpoints stem from and access different capabilities.</p>
+            <ul>
+            <li><p><strong>Photos Endpoint:</strong> Address is {{base_url}}/photos - This endpoint retrieves a collection of photos.</p>
+            </li>
+            <li><p><strong>Search Endpoint:</strong> Address is {{base_url}}/search/photos - This is the endpoint for searching for all photos depending on the query. It searches through queries provided. It can also take other query parameters which can be required or optional.</p>
+            </li>
+            </ul>
+            <p><strong>Required parameters:</strong></p>
+            <ul>
+            <li>Query: search term</li>
+            </ul>
+            <p><strong>Optional parameters:</strong></p>
+            <ul>
+            <li><p>Page</p>
+            </li>
+            <li><p>Per_page</p>
+            </li>
+            <li><p>Order_by</p>
+            </li>
+            </ul>
+            <p><strong>Authorization</strong></p>
+            <p>As with many APIs, the Unsplash API requires one to be authorized to access certain endpoints. Seamlessly integrate Unsplash using clear instructions on API authorization for calls.</p>
+            <p>Unsplash uses access keys provided once you register your development app in their developer portal.</p>
+            <ol>
+            <li><p>Go to your registered application in your developer account.</p>
+            </li>
+            <li><p>Copy the access key associated with this application.</p>
+            </li>
+            <li><p>The access key authorizes requests that require authorization to access.</p>
+            </li>
+            <li><p>This access key can be used in two ways:</p>
+            <ul>
+            <li><p><strong>Authorization Header:</strong> Sent with every request.</p>
+            </li>
+            <li><p><strong>Query Parameter:</strong> Included in the request URL (e.g. {{base_url}}/photos?client_id={{access_key}}).</p>
+            </li>
+            </ul>
+            </li>
+            </ol>
+            <p><strong>Postman Collection</strong></p>
+            <p>Experiment with the API using a pre-configured Postman collection, simplifying testing and exploration.</p>
+            <p>
+            <div class="postman-run-button"
+                        data-postman-action="collection/fork"
+                        data-postman-visibility="public"
+                        data-postman-var-1="20326931-6d532194-1346-4ba9-b123-5eba583c38a8"
+                        data-postman-collection-url="entityId=20326931-6d532194-1346-4ba9-b123-5eba583c38a8&entityType=collection&workspaceId=608ec5df-bcbb-4e24-b6e0-4316a10553d3"></div>
+                        <script type="text/javascript">
+                        (function (p,o,s,t,m,a,n) {
+                            !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
+                            !o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
+                            (n = o.createElement("script")),
+                            (n.id = s+t), (n.async = 1), (n.src = m), n
+                            ));
+                        }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
+                        </script>
                     </p>
+            <p><strong>Additional Resources</strong></p>
+            <ul>
+            <li><p><strong>Unsplash API Reference:</strong> <a href="https://unsplash.com/documentation">https://unsplash.com/documentation</a></p>
+            </li>
+            <li><p><strong>Unsplash API Guidelines:</strong> <a href="https://unsplash.com/documentation">https://unsplash.com/documentation</a></p>
+            </li>
+            </ul>
+            <p><strong>Business Benefits of the API</strong></p>
+            <ul>
+            <li><p><strong>Royalty-Free Advantage:</strong> Unleash a world of free, high-quality images without copyright worries.</p>
+            </li>
+            <li><p><strong>Faster Development:</strong> Shorten development cycles by utilizing Unsplash&#39;s extensive library, saving you time and resources.</p>
+            </li>
+            <li><p><strong>Effortless Integration:</strong> Integrate Unsplash seamlessly into your projects with its user-friendly API.</p>
+            </li>
+            <li><p><strong>Data-Driven Decisions:</strong> Gain valuable insights through Unsplash&#39;s features like hotlinking, allowing you to track image performance and user engagement.</p>
+            </li>
+            </ul>
+           </div>
 
-                    <h4>API Capabilities</h4>
-                    <p>
-                        The power of Unsplash API is the access to a vast image libary. Some of the capabilities that are worth taking note include:
-
-                        1. Search for photos and videos
-                        <br/>
-                        The API gives you the ability to search for photos and videos based on a query string. You can search for photos and videos by keyword, category, color, and more.
-                        <br/>
-                        2. Fetch photos and videos.
-                        <br/>
-                        You can fetch photos and videos by ID. This allows you to get a specific photo or video from the Unsplash library.
-                        <br/>
-                        3. Get a random photo
-                        <br/>
-                        The API allows you to get a random photo from the Unsplash library. This is great for when you need a placeholder image for your website or application.
-                        <br/>
-                        4. Get a photo by ID
-                        <br/>
-                        You can get a specific photo by its ID. This allows you to access the photo's details, such as its download link, exif data, and more.
-                        <br/>
-                        5. Get a photo's statistics
-                        <br/>
-                        You can get a photo's statistics, such as the number of views, downloads, and likes. This is useful for tracking the popularity of a photo.
-                        <br/>
-                        6. Get a photo's download link.
-                        <br/>
-                        You can get a photo's download link, which allows you to download the photo directly from Unsplash.
-                        <br/>
-                        7. Get a photo's exif data
-                        <br/>
-                        You can get a photo's exif data, which includes information about the camera settings used to capture the photo.
-                        <br/>
-                        8. Get a photo's collections
-                        <br/>
-                        You can get a photo's collections, which allows you to see which collections the photo belongs to.
-                        <br/>
-                        9. Get a photo's related photos
-                        <br/>
-                        You can get a photo's related photos, which are photos that are similar to the photo you are viewing.
-                        <br/>
-                        10. Get a user's profile.
-                        <br/>
-                        You can get a user's profile, which includes information about the user, such as their name, bio, and profile picture.
-                        <br/>
-                        11. Get a user's photos.
-                        <br/>
-                        You can get a user's photos, which allows you to see all the photos uploaded by the user.
-                        <br/>
-                        12. Get a user's liked photos.
-                        <br/>
-                        You can get a user's liked photos, which allows you to see all the photos that the user has liked.
-                        <br/>
-                        13. Get a user's collections
-                        14. Get a collection
-                        15. Get a collection's photos
+           <div>
+            <h2 id="rick-and-morty-api-documentation">Rick and Morty API Documentation</h2>
+            <p>Get schwifty with the Rick and Morty API! Explore a vast collection of data about characters, locations, and episodes from the hit animated series Rick and Morty.</p>
+            <p><strong>What can you do with this API?</strong></p>
+            <ul>
+            <li><p>Access detailed information about hundreds of Rick and Morty characters, including their names, statuses, species, and appearances.</p>
+            </li>
+            <li><p>Dive into various locations throughout the multiverse, uncovering their unique features and connections to characters.</p>
+            </li>
+            <li><p>Unravel the mysteries of the Rick and Morty universe by exploring episode details, air dates, and character appearances.</p>
+            </li>
+            </ul>
+            <p><strong>Getting Started</strong></p>
+            <p>The Rick and Morty API is a free and open-source RESTful API. To get started, you simply need to make HTTP requests to the API&#39;s base URL: <a href="https://rickandmortyapi.com/api/">https://rickandmortyapi.com/api/</a>. All responses are provided in JSON format.</p>
+            <p><strong>Exploring Endpoints</strong></p>
+            <p>The Rick and Morty API offers several endpoints for retrieving specific data:</p>
+            <ul>
+            <li><p><strong>Characters:</strong> /character - This endpoint retrieves a list of characters. You can optionally filter results by ID or name.</p>
+            </li>
+            <li><p><strong>Locations:</strong> /location - This endpoint retrieves a list of locations. You can optionally filter results by ID or name.</p>
+            </li>
+            <li><p><strong>Episodes:</strong> /episode - This endpoint retrieves a list of episodes. You can optionally filter results by ID or name.</p>
+            </li>
+            </ul>
+            <p><strong>Example Requests:</strong></p>
+            <ul>
+            <li><p>Get information about character with ID 1: <a href="https://rickandmortyapi.com/api/character/1">https://rickandmortyapi.com/api/character/1</a></p>
+            </li>
+            <li><p>Get all locations containing the word &quot;Citadel&quot; in their name: <a href="https://rickandmortyapi.com/api/location?name=Citadel">https://rickandmortyapi.com/api/location?name=Citadel</a></p>
+            </li>
+            <li><p>Get the first 10 episodes: <a href="https://rickandmortyapi.com/api/episode?page=1&amp;per\_page=10">https://rickandmortyapi.com/api/episode?page=1&amp;per\_page=10</a></p>
+            </li>
+            </ul>
+            <p><strong>Pagination:</strong></p>
+            <p>For endpoints that return large datasets (like characters), the API uses pagination to manage the number of results returned per request. You can control pagination using the following query parameters:</p>
+            <ul>
+            <li><p>page: The current page number (defaults to 1).</p>
+            </li>
+            <li><p>per_page: The number of results per page (defaults to 20, maximum is 100).</p>
+            </li>
+            </ul>
+            <p><strong>Postman Collection</strong></p>
+            <p>Experiment with the API using a pre-configured Postman collection, simplifying testing and exploration.</p>
+            <p>
+            <div class="postman-run-button"
+                        data-postman-action="collection/fork"
+                        data-postman-visibility="public"
+                        data-postman-var-1="20326931-6d532194-1346-4ba9-b123-5eba583c38a8"
+                        data-postman-collection-url="entityId=20326931-6d532194-1346-4ba9-b123-5eba583c38a8&entityType=collection&workspaceId=608ec5df-bcbb-4e24-b6e0-4316a10553d3"></div>
+                        <script type="text/javascript">
+                        (function (p,o,s,t,m,a,n) {
+                            !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
+                            !o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
+                            (n = o.createElement("script")),
+                            (n.id = s+t), (n.async = 1), (n.src = m), n
+                            ));
+                        }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
+                        </script>
                     </p>
+            <p><strong>Additional Features</strong></p>
+            <ul>
+            <li><p><strong>Filtering:</strong> Refine your searches using query parameters like name and status for characters, and name and type for locations.</p>
+            </li>
+            <li><p><strong>Searching:</strong> Utilize the search functionality within specific endpoints (e.g., /character/?name=Rick).</p>
+            </li>
+            </ul>
+            <p><strong>Resources</strong></p>
+            <ul>
+            <li><p><strong>API Documentation:</strong> <a href="https://rickandmortyapi.com/">https://rickandmortyapi.com/</a></p>
+            </li>
+            <li><p><strong>GitHub Repository:</strong> <a href="https://github.com/topics/rick-and-morty">https://github.com/topics/rick-and-morty</a></p>
+            </li>
+            </ul>
 
-                    <h4>Getting Started</h4>
-                    <p>
-                        To get started with the Unsplash API, you need to follow these steps:
-                        <br/>
-                        1. Create a developer account with Unsplash. To create a developer account just go to https://unsplash.com/oauth/applications.
-                        <br/>
-                        2. Register your application. This will help in authorisation (provide an access token) for which you can access the API's full capability. A registered app goes into Demo Mode first with a limit of 50 requests per hour. Then later on one can apply for production mode. Demo mode is great for testing.
-                        <br/>
-                    </p>
-                    <h4>Developer Playground</h4>
-                    <p>
-                        To provide a playground for developers to test the capbilities of this API, I have created a simple Postman collection that can be used to test the API.
-                        Similarly this API has been coupled with the Rick and Morty API to provide a test use case on how to use both APIs together in the API Showcase page of this website.
-                    </p>
-
-                    <h4>Developer Playground</h4>
-                    <p>
-                        See examples of common use cases and how to solve them with our product.
-                    </p>
-                </section>
-
-            </div>
-            <div class="ricknmorty">
-                <h2>Rick and Morty</h2>
-                <p class="text-muted">
-                    Learn about the power of Rick and Morty, how to intergrate it and the different use cases for their amazing API
-                </p>
-                <p>
-                    Rick and Morty is a popular animated TV show that follows the adventures of an eccentric and alcoholic scientist and his good-hearted but easily influenced grandson.
-                </p>
-                <section class="indent-details">
-                    <h4>Rick and Morty API</h4>
-                    <p>
-                        The Rick and Morty API is a RESTful and GraphQL API based on the television show "Rick and Morty". It provides information about the characters, locations, and episodes from the series. Developers can use this API to access detailed data programmatically, making it a valuable resource for creating applications or services that leverage the rich universe of "Rick and Morty".
-                    </p>
-
-                    <h4>API Capabilities</h4>
-                    <p>
-                        Detailed information about our API endpoints, parameters, and responses.
-                    </p>
-
-                    <h4>Developer Playground</h4>
-                    <p>
-                        See examples of common use cases and how to solve them with our product.
-                    </p>
-
-                    <h4>Developer Playground</h4>
-                    <p>
-                        See examples of common use cases and how to solve them with our product.
-                    </p>
-                </section>
-
-            </div>
-        </div>
+           </div>
+        </section>
     </main>
     <footer class="text-center">
         © 2023 Project Name. All rights reserved.
