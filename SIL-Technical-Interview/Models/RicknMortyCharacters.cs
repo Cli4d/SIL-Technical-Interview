@@ -13,8 +13,8 @@ public class Info
 }
 
 
-/* 
- 
+/*
+
  JSON data for the character API
 
  {

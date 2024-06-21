@@ -1,4 +1,5 @@
-public class UnsplashAPI {
+public class UnsplashAPI
+{
     public string? Id { get; set; }
     public string? Slug { get; set; }
     public URLS? Urls { get; set; }
@@ -13,7 +14,8 @@ public class UnsplashAPI {
 }
 
 //URLS class
-public class URLS {
+public class URLS
+{
     public string? Raw { get; set; }
     public string? Full { get; set; }
     public string? Regular { get; set; }

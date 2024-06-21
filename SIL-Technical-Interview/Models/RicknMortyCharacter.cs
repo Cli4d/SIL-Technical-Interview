@@ -1,5 +1,6 @@
-public class RicknMortyCharacter {
-	//create properties for the character
+public class RicknMortyCharacter
+{
+    //create properties for the character
     public int Id { get; set; }
     public string? Name { get; set; }
     public string? Status { get; set; }
@@ -9,7 +10,6 @@ public class RicknMortyCharacter {
     public Origin? Origin { get; set; }
     public Location? Location { get; set; }
     public string? Image { get; set; }
-    
 }
 
 public class Location
@@ -25,8 +25,8 @@ public class Origin
 }
 
 
-/* 
- 
+/*
+
  JSON data for the character API
 
  {

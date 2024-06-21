@@ -1,4 +1,4 @@
-.indent-details{
+.indent-details {
     /* Make this indented */
     margin-left: 5rem;
 }
@@ -23,6 +23,7 @@
     background-color: #f8f9fa; /* Light background */
     border-right: 1px solid #dee2e6; /* Light grey border */
 }
+
 .sidebar ul {
     list-style-type: none;
     padding: 0;
