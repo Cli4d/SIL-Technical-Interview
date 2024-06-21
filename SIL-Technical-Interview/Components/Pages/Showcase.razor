@@ -9,9 +9,8 @@
         <input type="text" class="form-control" placeholder="Enter a character name" aria-label="Search for a character" aria-describedby="button-addon2">
         <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="FetchData">Search</button>
     </div>
-
-@if (characters != null)
-{
+@if (characters?.Results != null)
+{   
     //Loop through characters and place them in bootstrap cards
     foreach (var character in characters.Results)
     {
@@ -80,25 +79,22 @@ public string accessKeyUnsplash = "WWn4FRwhMMHjRfFz_k_YsIJegwHUoNeth-mZQHLNn0s";
 //httpclient
 public HttpClient httpClient = new HttpClient();
 
+//Get characters on load
+protected override async Task OnInitializedAsync()
+{
+    await FetchData();
+}
+
 //fetchdata method
 private async Task FetchData()
 {
     //Make API call for list of characters
     characters = await httpClient.GetFromJsonAsync<RicknMortyCharacters>("https://rickandmortyapi.com/api/character");
 
-    //print characters
-    Console.WriteLine("characters");
-
     @*character = await httpClient.GetFromJsonAsync<RicknMortyCharacter>("https://rickandmortyapi.com/api/characters");*@
     
     //Get an image from each character location
     @* unsplashAPI = await httpClient.GetFromJsonAsync<UnsplashAPI>($"https://api.unsplash.com/photos/random}"; *@
     @* unsplashAPI = await httpClient.GetFromJsonAsync<UnsplashAPI>($"https://api.unsplash.com/photos/random?query={character.Location.Name}&client_id=" + {accessKeyUnsplash}"; *@
-}
-
-//Get characters on load
-protected override async Task OnInitializedAsync()
-{
-    FetchData();
 }
 }
