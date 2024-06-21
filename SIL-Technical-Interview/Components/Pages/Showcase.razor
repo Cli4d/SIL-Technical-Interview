@@ -1,0 +1,107 @@
+@page "/showcase"
+
+<PageTitle>Rick and Morty Character Showcase</PageTitle>
+
+<h2>Rick and Morty Character Showcase</h2>
+
+@if (characters?.Results != null)
+{
+    <div class="row">
+    @foreach (var character in characters.Results)
+    {
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                <img src="@character.Image" class="card-img-top" alt="@character.Name"/>
+                <div class="card-body">
+                    <h5 class="card-title displa-2">@character.Name</h5>
+                    <p class="card-text">
+                        <span class="h6">Character Info</span>
+                        <br/>
+                        <span>Status</span>: @character.Status
+                        <br/>
+                        <span>Species</span>: @character.Species
+                        <br/>
+                        <span>Location</span>: @character.Location.Name
+                    </p>
+                    <br/>
+                </div>
+            </div>
+        </div>
+    }
+
+    </div>
+
+<h2>Unsplash Photos based of Character locations</h2>
+    @if (unsplashResponse != null){
+        <div class="row">
+            @foreach (var image in imageUrls)
+            {
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;">
+                   <img src="@image" class="img-fluid" alt="Unsplash Image"/>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>Images not found</p>
+    }
+
+}
+else
+{
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+}
+
+
+@code {
+//Rick and Morty Character
+    public RicknMortyCharacter character;
+
+//Rick and Morty Characters info    
+    public RicknMortyCharacters characters;
+
+//Unsplash Images from the characters
+    public UnsplashAPI unsplashAPI;
+
+//Unsplash Images list
+    public UnsplashResponse unsplashResponse;
+
+//Unsplash API Access Key
+    public string accessKeyUnsplash = "WWn4FRwhMMHjRfFz_k_YsIJegwHUoNeth-mZQHLNn0s";
+
+//httpclient
+    public HttpClient httpClient = new();
+
+//search input
+    public string searchInput="";
+
+//Image Urls
+private List<string> imageUrls = new List<string>();
+
+//Get characters on load
+    protected override async Task OnInitializedAsync()
+    {
+        await FetchData();
+    }
+
+//fetchdata method
+    private async Task FetchData()
+    {
+        //Make API call for list of characters
+        characters = await httpClient.GetFromJsonAsync<RicknMortyCharacters>("https://rickandmortyapi.com/api/character");
+
+        //Get an image from each character location
+        foreach (var character in characters.Results)
+        {
+            unsplashResponse = await httpClient.GetFromJsonAsync<UnsplashResponse>($"https://api.unsplash.com/search/photos?query={character.Location.Name}&client_id=WWn4FRwhMMHjRfFz_k_YsIJegwHUoNeth-mZQHLNn0s");
+            imageUrls = unsplashResponse.Results.Select(r => r.Urls.Regular).ToList();
+        }
+    }
+}

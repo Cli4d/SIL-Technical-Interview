@@ -1,15 +1,16 @@
 ﻿@inherits LayoutComponentBase
 
+<NavMenu/>
+@* <div class="sidebar">
+<ul>
+    <li><a href="#section1">Section 1</a></li>
+    <li><a href="#section2">Section 2</a></li>
+    <li><a href="#section3">Section 3</a></li>
+    <!-- Add more sections as needed -->
+</ul>
+</div> *@
 <div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
     <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
-
         <article class="content px-4">
             @Body
         </article>
