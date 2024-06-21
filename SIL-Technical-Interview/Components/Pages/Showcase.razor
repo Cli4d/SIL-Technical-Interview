@@ -2,13 +2,8 @@
 
 <PageTitle>Rick and Morty Character Showcase</PageTitle>
 
-<h1>Rick and Morty Character Showcase</h1>
+<h2>Rick and Morty Character Showcase</h2>
 
-@* Add a boostrap search and it's label *@
-<div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Enter a character name" aria-label="Search for a character" aria-describedby="button-addon2">
-    <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="FetchData">Search</button>
-</div>
 @if (characters?.Results != null)
 {
     <div class="row">
@@ -28,36 +23,32 @@
                         <br/>
                         <span>Location</span>: @character.Location.Name
                     </p>
+                    <br/>
                 </div>
             </div>
         </div>
-        
     }
+
     </div>
 
-    <div class="card" style="width: 18rem;">
-        <img src="@character?.Image" class="card-img-top" alt="@character?.Name"/>
-        <div class="card-body">
-            <h5 class="card-title">@character?.Name</h5>
-            <p class="card-text">
-                Character Info
-                Status: @character?.Status
-                Species: @character?.Species
-                Location: @character?.Location?.Name
-
-            </p>
+<h2>Unsplash Photos based of Character locations</h2>
+    @if (unsplashResponse != null){
+        <div class="row">
+            @foreach (var image in imageUrls)
+            {
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;">
+                   <img src="@image" class="img-fluid" alt="Unsplash Image"/>
+                    </div>
+                </div>
+            }
         </div>
-    </div>
-
-
-    @if (unsplashAPI != null)
-    {
-        <img src="@unsplashAPI?.Urls.Regular" alt="@character?.Location?.Name"/>
     }
     else
     {
-        <p>Image not found</p>
+        <p>Images not found</p>
     }
+
 }
 else
 {
@@ -70,7 +61,6 @@ else
 
 
 @code {
-
 //Rick and Morty Character
     public RicknMortyCharacter character;
 
@@ -80,11 +70,20 @@ else
 //Unsplash Images from the characters
     public UnsplashAPI unsplashAPI;
 
+//Unsplash Images list
+    public UnsplashResponse unsplashResponse;
+
 //Unsplash API Access Key
     public string accessKeyUnsplash = "WWn4FRwhMMHjRfFz_k_YsIJegwHUoNeth-mZQHLNn0s";
 
 //httpclient
     public HttpClient httpClient = new();
+
+//search input
+    public string searchInput="";
+
+//Image Urls
+private List<string> imageUrls = new List<string>();
 
 //Get characters on load
     protected override async Task OnInitializedAsync()
@@ -98,11 +97,11 @@ else
         //Make API call for list of characters
         characters = await httpClient.GetFromJsonAsync<RicknMortyCharacters>("https://rickandmortyapi.com/api/character");
 
-        @*character = await httpClient.GetFromJsonAsync<RicknMortyCharacter>("https://rickandmortyapi.com/api/characters");*@
-
         //Get an image from each character location
-        @* unsplashAPI = await httpClient.GetFromJsonAsync<UnsplashAPI>($"https://api.unsplash.com/photos/random}"; *@
-        @* unsplashAPI = await httpClient.GetFromJsonAsync<UnsplashAPI>($"https://api.unsplash.com/photos/random?query={character.Location.Name}&client_id=" + {accessKeyUnsplash}"; *@
+        foreach (var character in characters.Results)
+        {
+            unsplashResponse = await httpClient.GetFromJsonAsync<UnsplashResponse>($"https://api.unsplash.com/search/photos?query={character.Location.Name}&client_id=WWn4FRwhMMHjRfFz_k_YsIJegwHUoNeth-mZQHLNn0s");
+            imageUrls = unsplashResponse.Results.Select(r => r.Urls.Regular).ToList();
+        }
     }
-
 }
