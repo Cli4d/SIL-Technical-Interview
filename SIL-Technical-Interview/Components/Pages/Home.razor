@@ -2,59 +2,144 @@
 
 <PageTitle>Rick and Morty Fan Art</PageTitle>
 
-<h1>Select a Rick and Morty Character</h1>
+<div class="container">
+    <header>
+        <h1>A Creative Guide into Unsplash and Rick and Morty APIs</h1>
+        <p>
+            This is a comprehensive guide meant to empower both developers and entrepreneurs to leverage the potential of the Unsplash and Rick and Morty APIs.
+        </p>
+    </header>
+    
+    <main>
+        <div class="content">
+            <div class="unsplash">
+                <h2>Unsplash</h2>
+                <p class="text-muted">
+                    Learn about the power of Unsplash, how to intergrate it and the different use cases for their amazing API
+                </p>
+                 <p>
+                    Unsplash is a website dedicated to sharing stock photography under the Unsplash license. The website claims over 110,000 contributing photographers and generates more than 9 billion photo impressions per month on their growing library of over 1.5 million photos.
+                </p>
+                <section class="indent-details">               
+                <h4>Unsplash API</h4>
+                <p>
+                    Unsplash has an API that allows you to access their library of photos and videos. 
+                    You can use the API to fetch photos and videos, search for photos and videos, and more. The API is free to use and does not require an API key.
+                </p>
+                
+                <h4>API Capabilities</h4>
+                <p>
+                    The power of Unsplash API is the access to a vast image libary. Some of the capabilities that are worth taking note include:
 
-<button @onclick="FetchData">Fetch Data</button>
+                    1. Search for photos and videos
+                    <br/>
+                    The API gives you the ability to search for photos and videos based on a query string. You can search for photos and videos by keyword, category, color, and more.
+                    <br/>
+                    2. Fetch photos and videos. 
+                    <br/>
+                    You can fetch photos and videos by ID. This allows you to get a specific photo or video from the Unsplash library.
+                    <br/>
+                    3. Get a random photo
+                    <br/>
+                    The API allows you to get a random photo from the Unsplash library. This is great for when you need a placeholder image for your website or application.
+                    <br/>
+                    4. Get a photo by ID
+                    <br/>
+                    You can get a specific photo by its ID. This allows you to access the photo's details, such as its download link, exif data, and more.
+                    <br/>
+                    5. Get a photo's statistics
+                    <br/>
+                    You can get a photo's statistics, such as the number of views, downloads, and likes. This is useful for tracking the popularity of a photo.
+                    <br/>
+                    6. Get a photo's download link. 
+                    <br/>
+                    You can get a photo's download link, which allows you to download the photo directly from Unsplash.
+                    <br/>
+                    7. Get a photo's exif data
+                    <br/>
+                    You can get a photo's exif data, which includes information about the camera settings used to capture the photo.
+                    <br/>
+                    8. Get a photo's collections
+                    <br/>
+                    You can get a photo's collections, which allows you to see which collections the photo belongs to.
+                    <br/>
+                    9. Get a photo's related photos
+                    <br/>
+                    You can get a photo's related photos, which are photos that are similar to the photo you are viewing.
+                    <br/>
+                    10. Get a user's profile.
+                    <br/>
+                    You can get a user's profile, which includes information about the user, such as their name, bio, and profile picture.
+                    <br/>
+                    11. Get a user's photos.
+                    <br/>
+                    You can get a user's photos, which allows you to see all the photos uploaded by the user.
+                    <br/>
+                    12. Get a user's liked photos. 
+                    <br/>
+                    You can get a user's liked photos, which allows you to see all the photos that the user has liked.
+                    <br/>
+                    13. Get a user's collections
+                    14. Get a collection
+                    15. Get a collection's photos
+                </p>
+                
+                <h4>Getting Started</h4>
+                <p>
+                    To get started with the Unsplash API, you need to follow these steps:
+                    <br/>
+                    1. Create a developer account with Unsplash. To create a developer account just go to https://unsplash.com/oauth/applications. 
+                    <br/>
+                    2. Register your application. This will help in authorisation (provide an access token) for which you can access the API's full capability. A registered app goes into Demo Mode first with a limit of 50 requests per hour. Then later on one can apply for production mode. Demo mode is great for testing.
+                    <br/> 
+                </p>
+                <h4>Developer Playground</h4>
+                <p>
+                    To provide a playground for developers to test the capbilities of this API, I have created a simple Postman collection that can be used to test the API.
+                    Similarly this API has been coupled with the Rick and Morty API to provide a test use case on how to use both APIs together in the API Showcase page of this website.    
+                </p>
 
-@if (character != null)
-{
-    <h2>@character.Name</h2>
-    <img src="@character.Image" alt="@character.Name" />
-    <p>@character.Status</p>
-    <p>@character.Species</p>
-    <p>@character.Location.Name</p>
+                <h4>Developer Playground</h4>
+                <p>
+                    See examples of common use cases and how to solve them with our product.
+                </p>
+                </section>
+                
+            </div>
+            <div class="ricknmorty">
+                <h2>Rick and Morty</h2>
+                <p class="text-muted">
+                    Learn about the power of Rick and Morty, how to intergrate it and the different use cases for their amazing API    
+                </p>
+                <p>
+                    Rick and Morty is a popular animated TV show that follows the adventures of an eccentric and alcoholic scientist and his good-hearted but easily influenced grandson.
+                </p>
+                <section class="indent-details">
+                    <h4>Rick and Morty API</h4>
+                <p>
+                    The Rick and Morty API is a RESTful and GraphQL API based on the television show "Rick and Morty". It provides information about the characters, locations, and episodes from the series. Developers can use this API to access detailed data programmatically, making it a valuable resource for creating applications or services that leverage the rich universe of "Rick and Morty".
+                </p>
+                
+                <h4>API Capabilities</h4>
+                <p>
+                    Detailed information about our API endpoints, parameters, and responses.
+                </p>
+                
+                <h4>Developer Playground</h4>
+                <p>
+                    See examples of common use cases and how to solve them with our product.
+                </p>
 
-
-    @if (unsplashAPI != null)
-    {
-        <img src="@unsplashAPI.Urls.Regular" alt="@character.Location.Name" />
-    }
-    else
-    {
-        <p>Image not found</p>
-    }
-}
-else
-{
-    <p>Search for your desired character</p>
-}
-
-
-@code{
-//Rick and Morty Character
-public RicknMortyCharacter character;
-
-//Unsplash Images from the character selected
-public UnsplashAPI unsplashAPI;
-
-//Unsplash API Access Key
-public string accessKeyUnsplash = "WWn4FRwhMMHjRfFz_k_YsIJegwHUoNeth-mZQHLNn0s";
-
-//httpclient
-public HttpClient httpClient = new HttpClient();
-
-//fetchdata method
-public async Task FetchData()
-{
-    character = await httpClient.GetFromJsonAsync<RicknMortyCharacter>("https://rickandmortyapi.com/api/character/24");
-
-    //Unsplash API
-    unsplashAPI = await httpClient.GetFromJsonAsync<UnsplashAPI>("https://api.unsplash.com/photos/random?query=" + character.Location.Name + "&client_id=" + accessKeyUnsplash);
-}
-//Run fetch data immediatelly when app loads
- protected override async Task OnInitializedAsync()
-{
-    await FetchData();
-    }
-
-}
+                <h4>Developer Playground</h4>
+                <p>
+                    See examples of common use cases and how to solve them with our product.
+                </p>
+                </section>
+                
+            </div>
+        </div>
+    </main>
+    <footer class="text-center">
+        © 2023 Project Name. All rights reserved.
+    </footer>
+</div>
