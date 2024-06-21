@@ -1,0 +1,45 @@
+.indent-details{
+    /* Make this indented */
+    margin-left: 5rem;
+}
+
+
+/* .sidebar {
+    width: 200px;
+    height: 100%;
+    padding: 20px;
+    overflow-y: auto;
+    border-right: 0.1rem solid #d3d3d3;
+} */
+
+.sidebar {
+    width: 250px;
+    height: 100%; /* Full height */
+    position: relative;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f8f9fa; /* Light background */
+    border-right: 1px solid #dee2e6; /* Light grey border */
+}
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.sidebar ul li a:hover {
+    background-color: #ddd;
+}
+
+section {
+    margin-bottom: 20px;
+}
